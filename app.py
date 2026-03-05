@@ -7,7 +7,7 @@ def get_range_for_difficulty(difficulty: str):
     if difficulty == "Normal":
         return 1, 100
     if difficulty == "Hard":
-        return 1, 50
+        return 1, 500
     return 1, 100
 
 
@@ -15,8 +15,13 @@ def parse_guess(raw: str):
     if raw is None:
         return False, None, "Enter a guess."
 
-    if raw == "":
+    if raw == "" or raw == " ":
         return False, None, "Enter a guess."
+
+    if(raw < low):
+        return False, None, "Below Guessing Range."
+    if(raw > high):
+        return False, None, "Above Guessing Range."
 
     try:
         if "." in raw:
@@ -35,16 +40,16 @@ def check_guess(guess, secret):
 
     try:
         if guess > secret:
-            return "Too High", "📈 Go HIGHER!"
+            return "Too High", "📉 Go LOWER!"
         else:
-            return "Too Low", "📉 Go LOWER!"
+            return "Too Low", "📈 Go HIGHER!"
     except TypeError:
         g = str(guess)
         if g == secret:
             return "Win", "🎉 Correct!"
         if g > secret:
-            return "Too High", "📈 Go HIGHER!"
-        return "Too Low", "📉 Go LOWER!"
+            return "Too High", "📈 Go LOWER!"
+        return "Too Low", "📉 Go HIGHER!"
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):

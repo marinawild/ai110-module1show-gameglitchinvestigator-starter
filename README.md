@@ -26,7 +26,14 @@ It wrote the code, ran away, and now the game is unplayable.
 ## 📝 Document Your Experience
 
 - [ ] Describe the game's purpose.
+   This is a number guessing game where the game has a selected number chosen already and the user must try and guess the number.
+   The range is between 1 and 100 and the user has a predetermined number of guesses (in this case 8) are allowed. 
+   The user can allow for hints to help in guessing and can choose to start a new game, if desired.
 - [ ] Detail which bugs you found.
+   Some bugs I discovered are that it allows for input less than 1 and greater than 100.
+   It also always says to guess lower even when the minimum value (1) is reached.
+   Lastly, if the game is lost of unfinished, it does not allow for a new game to be started when you click, "New Game" button.
+   When the correct asnwer is input, it works, but then went a new game is started the submit guess, button does not work.
 - [ ] Explain what fixes you applied.
 
 ## 📸 Demo
